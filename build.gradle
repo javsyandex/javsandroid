@@ -25,3 +25,10 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+task runApks(type: Copy) {
+    from("$buildDir/outputs/apk") {
+        exclude '**/*unsigned.apk', '**/*unaligned.apk'
+    }
+    into '../apks'
+}
+
